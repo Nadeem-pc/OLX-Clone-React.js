@@ -40,7 +40,7 @@ const Navbar = () => {
             </div>
 
             <div className="sub-header">
-                <select name="" id="">
+                <select>
                     <option value="">ALL CATEGORIES</option>
                 </select>
                 <ul>

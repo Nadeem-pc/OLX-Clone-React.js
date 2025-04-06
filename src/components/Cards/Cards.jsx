@@ -1,0 +1,34 @@
+import React from "react";
+
+const BootstrapCards = () => {
+  const cards = [
+    { title: "Card 1", text: "This is card 1." },
+    { title: "Card 2", text: "This is card 2." },
+    { title: "Card 3", text: "This is card 3." },
+    { title: "Card 4", text: "This is card 4." },
+    { title: "Card 5", text: "This is card 5." },
+    { title: "Card 6", text: "This is card 6." },
+    { title: "Card 7", text: "This is card 7." },
+    { title: "Card 8", text: "This is card 8." },
+  ];
+
+  return (
+    <div className="container mt-4 p-5">
+        <h4>Fresh recommendations</h4>
+      <div className="row">
+        {cards.map((card, index) => (
+          <div className="col-md-3 mb-4" key={index}>
+            <div className="card h-100" style={{ minHeight: '260px' }}>
+              <div className="card-body">
+                <h5 className="card-title">{card.title}</h5>
+                <p className="card-text">{card.text}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default BootstrapCards;
