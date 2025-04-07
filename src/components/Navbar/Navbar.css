@@ -86,6 +86,7 @@
 
 .navbar-right a {
     text-decoration: underline;
+    cursor: pointer;
 }
 
 .sub-header {

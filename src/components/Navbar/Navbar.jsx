@@ -1,13 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Navbar.css'
 import logo from '../../assets/logo.jpg' 
 import search_icon from '../../assets/search_icon.svg'
 import search_icon2 from '../../assets/search_icon2.svg'
 import arrow_down from '../../assets/arrow_down.svg'
 import favourites_icon from '../../assets/favourites_icon.svg'
+import LoginPopup from '../Login/Login';
 
 
 const Navbar = () => {
+
+    const [showLogin, setShowLogin] = useState(false)
+
+    const toggleLogin = () => {
+        setShowLogin(prev => !prev)
+    }
+
     return(
         <>
             <div className='navbar'>
@@ -34,7 +42,7 @@ const Navbar = () => {
                         <option value="">हिंदी</option>
                     </select>
                     <img src={favourites_icon} alt="" />
-                    <a>Login</a>
+                    <a onClick={toggleLogin}>Login</a>
                     <button>+ SELL</button>
                 </div>
             </div>
@@ -53,6 +61,7 @@ const Navbar = () => {
                     <li>For Rent: Houses & Apartments</li>
                 </ul>
             </div>
+            {showLogin && <LoginPopup onClose={toggleLogin} />}
         </>
     )
 }

@@ -1,0 +1,81 @@
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.8); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-box {
+    background-color: white;
+    padding: 30px;
+    width: 28%;
+    height: 78vh;
+    border-radius: 3px;
+    position: relative;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+#guitarImg {
+    width: 100px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 5px;
+    right: 20px;
+    font-size: 35px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.popup-icon {
+    width: 50px;
+    margin-bottom: 10px;
+}
+
+.phone-btn,
+.google-btn {
+    width: 100%;
+    margin: 10px 0;
+    padding: 12px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: white;
+}
+
+#googleBtn {
+    border: 1px solid #ccc;
+}
+
+.google-btn img {
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.separator {
+    margin: 15px 0;
+    font-weight: bold;
+    color: #666;
+}
+
+.email-link {
+    font-weight: bold;
+    text-decoration: underline;
+    color: #333;
+    cursor: pointer;
+}
+
+.policy-note {
+    font-size: 12px;
+    color: #666;
+    margin-top: 20px;
+}

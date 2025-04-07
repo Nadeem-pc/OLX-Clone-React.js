@@ -1,0 +1,15 @@
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-body img {
+    width: 260px;
+}
+
+.details {
+    width: 100%;
+    padding: 7px;
+}
+
