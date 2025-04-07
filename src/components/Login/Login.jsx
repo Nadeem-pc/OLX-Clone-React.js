@@ -25,11 +25,12 @@ const LoginPopup = ({ onClose }) => {
         <p className="policy-note">
           All your personal details are safe with us.
           <br />
-          If you continue, you are accepting OLX Terms and Conditions and Privacy Policy
+          If you continue, you are accepting
+          <a className='policy-note-link'> OLX Terms and Conditions and Privacy Policy</a>
         </p>
       </div>
     </div>
-  );
+  ); 
 };
 
 export default LoginPopup;

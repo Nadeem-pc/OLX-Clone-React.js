@@ -75,7 +75,14 @@
 }
 
 .policy-note {
+    padding-top: 60px;
     font-size: 12px;
     color: #666;
     margin-top: 20px;
+}
+
+.policy-note-link {
+    font-size: 12px;
+    font-weight: 300;
+    text-decoration: blue;
 }
