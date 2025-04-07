@@ -44,14 +44,30 @@
     display: flex;
 }
 
-/* .lower-footer {
+.lower-footer {
+    height: 180px;
+    padding: 20px;
     display: flex;
     justify-content: space-around;
-    height: 180px;
     background: #043536;
 }
 
-.lower-footer p{
+.lower-footer img {
+    width: 120px;
+    display: flex;
+    align-items: center;
+}
+
+#olx-img {
+    width: 80px;
+}
+
+.coypright {
+    width: 100%;
+    padding: 0 70px;
+    display: flex;
+    justify-content: space-between;
+    background: #043536;
     color: white;
     font-size: 12px;
-} */
+}
