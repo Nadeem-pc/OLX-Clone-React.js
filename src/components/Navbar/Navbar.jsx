@@ -6,9 +6,12 @@ import search_icon2 from '../../assets/search_icon2.svg'
 import arrow_down from '../../assets/arrow_down.svg'
 import favourites_icon from '../../assets/favourites_icon.svg'
 import LoginPopup from '../Login/Login';
+import { useNavigate } from 'react-router-dom'
 
 
 const Navbar = () => {
+
+    const navigate = useNavigate()
 
     const [showLogin, setShowLogin] = useState(false)
 
@@ -43,7 +46,7 @@ const Navbar = () => {
                     </select>
                     <img src={favourites_icon} alt="" />
                     <a onClick={toggleLogin}>Login</a>
-                    <button>+ SELL</button>
+                    <button onClick={() => navigate('/post')}>+ SELL</button>
                 </div>
             </div>
 
