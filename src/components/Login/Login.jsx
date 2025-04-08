@@ -1,9 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Login.css';
+import { auth, provider } from '../../firebase'
+import {signInWithPopup} from 'firebase/auth'
 import guitar_img from '../../assets/loginEntryPointPost.webp'
+import { data } from 'react-router-dom';
 
 
 const LoginPopup = ({ onClose }) => {
+
+  const[value, setValue] = useState("")
+
+  const handleClick = () => {
+    signInWithPopup(auth, provider).then((data) => {
+      setValue(data.user.email)
+      localStorage.setItem("email", data.user.email)
+      location.reload()
+    })
+  }
+
+  useEffect(() => {
+    setValue(localStorage.getItem('email'))
+  })
+
+
   return (
     <div className="popup-overlay">
       <div className="popup-box">
@@ -14,7 +33,7 @@ const LoginPopup = ({ onClose }) => {
         <button className="phone-btn">
           📱 Continue with phone
         </button>
-        <button className="google-btn" id='googleBtn'>
+        <button className="google-btn" id='googleBtn' onClick={handleClick}>
           <img src="https://img.icons8.com/color/16/000000/google-logo.png" alt="Google Icon" />
           Continue with Google
         </button>
