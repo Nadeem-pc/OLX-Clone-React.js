@@ -53,7 +53,11 @@ const Navbar = () => {
                     ) : (
                         <a onClick={toggleLogin} style={{ cursor: 'pointer' }}>Login</a>
                     )}
-                    <button onClick={() => navigate('/post')}>+ SELL</button>
+                    {username ? (
+                        <button onClick={() => navigate('/post')}>+ SELL</button>
+                    ) : (
+                        <button onClick={toggleLogin}>+ SELL</button>
+                    )}
                 </div>
             </div>
 
