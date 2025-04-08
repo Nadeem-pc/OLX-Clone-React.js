@@ -19,6 +19,9 @@ const Navbar = () => {
         setShowLogin(prev => !prev)
     }
 
+    const email = localStorage.getItem('email');
+    const username = email ? email.split('@')[0] : null;
+
     return(
         <>
             <div className='navbar'>
@@ -45,7 +48,11 @@ const Navbar = () => {
                         <option value="">हिंदी</option>
                     </select>
                     <img src={favourites_icon} alt="" />
-                    <a onClick={toggleLogin}>Login</a>
+                    {username ? (
+                        <span style={{fontSize:'14px'}}>{username}</span>
+                    ) : (
+                        <a onClick={toggleLogin} style={{ cursor: 'pointer' }}>Login</a>
+                    )}
                     <button onClick={() => navigate('/post')}>+ SELL</button>
                 </div>
             </div>
