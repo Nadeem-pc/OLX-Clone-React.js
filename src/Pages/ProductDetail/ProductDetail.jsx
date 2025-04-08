@@ -10,7 +10,7 @@ const ProductDetail = () => {
   return (
     <div>
         <Navbar/>
-        <div className="container">
+        <div className="detail-page-container">
             <section className='product-img'>
                 <img src={sample} alt="" />
                 <div className="product-details">

@@ -1,6 +1,6 @@
 import React from "react";
 import './Cards.css'
-import favourites_icon from '../../assets/favourites_icon.svg'
+// import favourites_icon from '../../assets/favourites_icon.svg'
 import sample from '../../assets/blue-lamborghini-front.jpg'
 
 
