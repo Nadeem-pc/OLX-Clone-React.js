@@ -59,3 +59,16 @@
     /* width: 250px; */
     width: 100px;
 }
+
+.upload-img {
+    border: 0;
+    height: 30px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#img1, #img2, #img3{
+    border: 0;
+}
