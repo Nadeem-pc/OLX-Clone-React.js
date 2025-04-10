@@ -39,14 +39,12 @@ const AddProduct = () => {
 
         const formData = new FormData()
 
-        // Append text fields
         for (const key in productData) {
             if (productData[key]) {
                 formData.append(key, productData[key])
             }
         }
 
-        // // Append image files
         imageFiles.forEach((file, i) => {
             if (file) {
                 formData.append('images', file)
@@ -55,7 +53,7 @@ const AddProduct = () => {
 
         try {
             const res = await addProduct(formData);
-            console.log(res)
+            
             if (res.status === 201) {
                 alert('Product uploaded successfully!')
                 navigate('/')
@@ -63,6 +61,7 @@ const AddProduct = () => {
                 console.error('Upload failed:')
                 alert('Upload failed')
             }
+
         } catch (error) {
             console.error('Error uploading:', error)
             alert('Error occurred during upload')
@@ -140,10 +139,6 @@ const AddProduct = () => {
                         </section>
 
                         <div className="upload-img">
-                            {/* <input type="file" id='img1' name="images" data-index="0" accept="image/*" onChange={formControl} />
-                            <input type="file" id='img2' name="images" data-index="1" accept="image/*" onChange={formControl} />
-                            <input type="file" id='img3' name="images" data-index="2" accept="image/*" onChange={formControl} /> */}
-
                             {[0, 1, 2].map((i) => (
                                 <input
                                     key={i}
