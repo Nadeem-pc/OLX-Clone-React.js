@@ -67,3 +67,50 @@
     border: 1px solid black;
     border-radius: 3px;
 }
+
+.image-controls {
+    display: flex;
+    justify-content: space-between;
+}
+
+.image-controls button {
+    width: 50px;
+}
+
+.image-wrapper {
+    position: relative;
+    width: 750px;
+    height: auto;
+}
+
+.image-wrapper img {
+    width: 100%;
+    display: block;
+    border-radius: 4px;
+}
+
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    font-size: 24px;
+    padding: 10px 16px;
+    cursor: pointer;
+    z-index: 1;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.nav-btn:hover {
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.nav-btn.left {
+    left: 10px;
+}
+
+.nav-btn.right {
+    right: 10px;
+}

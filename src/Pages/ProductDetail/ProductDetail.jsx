@@ -44,10 +44,10 @@ const ProductDetail = () => {
         <Navbar/>
         <div className="detail-page-container">
             <section className='product-img'>
-                <img src={`http://localhost:4000/${product.images[imageIndex]}`} alt="" />
-                <div className="image-controls">
-                    <button onClick={handlePrev} disabled={imageIndex === 0}>Prev</button>
-                    <button onClick={handleNext} disabled={imageIndex === product.images.length - 1}>Next</button>
+                <div className="image-wrapper">
+                    <button className="nav-btn left" onClick={handlePrev} disabled={imageIndex === 0}>‹</button>
+                    <img src={`http://localhost:4000/${product.images[imageIndex]}`} alt={product.title} />
+                    <button className="nav-btn right" onClick={handleNext} disabled={imageIndex === product.images.length - 1}>›</button>
                 </div>
                 <div className="title">
                     <h2>{product.title}</h2>
