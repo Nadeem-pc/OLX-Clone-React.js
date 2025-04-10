@@ -5,6 +5,7 @@ export const ProductContext = createContext()
 const ProductProvider = ({children}) => {
 
     const[login, setLogin] = useState('false')
+
     const[productData, setProductData] = useState({
         category: '',
         sqft: '',
@@ -17,7 +18,7 @@ const ProductProvider = ({children}) => {
         title: '',
         description: '',
         price: '',
-        images: ''
+        images: ['', '', '']
     })
 
   return (

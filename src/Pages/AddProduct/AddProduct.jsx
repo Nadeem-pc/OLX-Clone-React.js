@@ -1,28 +1,74 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import './AddProduct.css'
 import goBack from '../../assets/left_arrow.png'
 import Footer from '../../components/Footer/Footer'
-// import sample from '../../assets/blue-lamborghini-front.jpg'
 import add_photo from '../../assets/add_photo.svg'
 import { useNavigate } from 'react-router-dom'
 import { ProductContext } from '../../Context/ProductContext'
-
+import axios from 'axios'
+import { addProduct } from '../../service'
 
 const AddProduct = () => {
 
     const {productData, setProductData} = useContext(ProductContext)
 
+    const [imageFiles, setImageFiles] = useState([null, null, null]);
+
     const navigate = useNavigate()
 
     const formControl = (e) => {
-        const { name, value } = e.target
-        setProductData((prv) => ({ ...prv, [name]: value }))
+        const { name, value, files, dataset } = e.target
+
+        if (name === 'images') {
+            const index = Number(dataset.index);
+            const file = files[0];
+
+            if (file) {
+                const updatedFiles = [...imageFiles]
+                updatedFiles[index] = file
+                setImageFiles(updatedFiles)
+            }
+
+        } else {
+            setProductData((prev) => ({ ...prev, [name]: value }))
+        }
     }
 
-    const handleForm = (e) => {
+    const handleForm = async (e) => {
         e.preventDefault();
-        // console.log(productData)
+
+        const formData = new FormData()
+
+        // Append text fields
+        for (const key in productData) {
+            if (productData[key]) {
+                formData.append(key, productData[key])
+            }
+        }
+
+        // // Append image files
+        imageFiles.forEach((file, i) => {
+            if (file) {
+                formData.append('images', file)
+            }
+        })
+
+        try {
+            const res = await addProduct(formData);
+            console.log(res)
+            if (res.status === 201) {
+                alert('Product uploaded successfully!')
+                navigate('/')
+            } else {
+                console.error('Upload failed:')
+                alert('Upload failed')
+            }
+        } catch (error) {
+            console.error('Error uploading:', error)
+            alert('Error occurred during upload')
+        }
     }
+
 
     return (
         <>
@@ -82,23 +128,35 @@ const AddProduct = () => {
 
                         <label>Images</label>
                         <section className='img-section'>
-                            <div className="img-1">
-                                <img src={add_photo} alt="" />
-                            </div>
-                            <div className="img-2">
-                                <img src={add_photo} alt="" />
-                            </div>
-                            <div className="img-3">
-                                <img src={add_photo} alt="" />
-                            </div>
+                           {[0, 1, 2].map((i) => (
+                                <div key={i} className={`img-${i + 1}`}>
+                                {/* <img
+                                    src={productData.images[i]}
+                                    className={productData.images[i] ? 'uploaded' : ''}
+                                /> */}
+                                  {imageFiles[i] && <img src={URL.createObjectURL(imageFiles[i])} alt={`Preview ${i}`} />}
+                                </div>
+                            ))}
                         </section>
 
                         <div className="upload-img">
-                            <input type="file" id='img1' accept='image/*'/>
-                            <input type="file" id='img2' accept='image/*'/>
-                            <input type="file" id='img3' accept='image/*'/>
-                        </div>  
+                            {/* <input type="file" id='img1' name="images" data-index="0" accept="image/*" onChange={formControl} />
+                            <input type="file" id='img2' name="images" data-index="1" accept="image/*" onChange={formControl} />
+                            <input type="file" id='img3' name="images" data-index="2" accept="image/*" onChange={formControl} /> */}
 
+                            {[0, 1, 2].map((i) => (
+                                <input
+                                    key={i}
+                                    type="file"
+                                    name="images"
+                                    id={`img${i}`}
+                                    data-index={i}
+                                    accept="image/*"
+                                    onChange={formControl}
+                                />
+                            ))}
+                        </div>
+ 
                         <button type="submit" style={{marginTop:'20px'}} className="btn btn-primary">Submit</button>
                     </form>
                 </div>
