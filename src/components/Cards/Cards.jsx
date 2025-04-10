@@ -35,7 +35,7 @@ const BootstrapCards = () => {
                     {card.images ?. [0] && (
                         <img
                             src={`http://localhost:4000/${card.images[0]}`} 
-                            onClick={() => navigate('/details')} 
+                            onClick={() => navigate(`/details/${card._id}`)} 
                             style={{ width: "100%", height: "190px", objectFit: "cover", cursor: "pointer" }} 
                         />
                     )}
