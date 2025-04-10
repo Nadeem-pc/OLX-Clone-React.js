@@ -5,7 +5,6 @@ import Footer from '../../components/Footer/Footer'
 import add_photo from '../../assets/add_photo.svg'
 import { useNavigate } from 'react-router-dom'
 import { ProductContext } from '../../Context/ProductContext'
-import axios from 'axios'
 import { addProduct } from '../../service'
 
 const AddProduct = () => {
@@ -88,13 +87,13 @@ const AddProduct = () => {
                         {productData.category === 'House' && (
                             <>
                                 <label>SQFT</label>
-                                <input type="number" name='sqft' value={productData.sqft} onChange={formControl}/>
+                                <input type="number" name='sqft' value={productData.sqft} onChange={formControl} required/>
     
                                 <label>Bathrooms</label>
-                                <input type="number" name='bathrooms' value={productData.bathrooms} onChange={formControl}/>
+                                <input type="number" name='bathrooms' value={productData.bathrooms} onChange={formControl} required/>
     
                                 <label>Bedrooms</label>
-                                <input type="number" name='bedrooms' value={productData.bedrooms} onChange={formControl}/>
+                                <input type="number" name='bedrooms' value={productData.bedrooms} onChange={formControl} required />
                             </>
                         )}
 
@@ -102,16 +101,16 @@ const AddProduct = () => {
                         {productData.category === 'Car' && (
                             <>
                                 <label>Brand</label>
-                                <input type="text" name='brand' value={productData.brand} onChange={formControl}/>
+                                <input type="text" name='brand' value={productData.brand} onChange={formControl} required/>
 
                                 <label>Year</label>
-                                <input type="number" name='year' value={productData.year} onChange={formControl}/>
+                                <input type="number" name='year' value={productData.year} onChange={formControl} required/>
 
                                 <label>No: of Owners</label>
-                                <input type="number" name='owners' value={productData.owners} onChange={formControl}/>
+                                <input type="number" name='owners' value={productData.owners} onChange={formControl} required/>
 
                                 <label>KM Driven</label>
-                                <input type="number"  name='KmDriven' value={productData.KmDriven} onChange={formControl}/>
+                                <input type="number"  name='KmDriven' value={productData.KmDriven} onChange={formControl} required/>
                             </>
                         )}
 
@@ -129,10 +128,6 @@ const AddProduct = () => {
                         <section className='img-section'>
                            {[0, 1, 2].map((i) => (
                                 <div key={i} className={`img-${i + 1}`}>
-                                {/* <img
-                                    src={productData.images[i]}
-                                    className={productData.images[i] ? 'uploaded' : ''}
-                                /> */}
                                   {imageFiles[i] && <img src={URL.createObjectURL(imageFiles[i])} alt={`Preview ${i}`} />}
                                 </div>
                             ))}
@@ -142,6 +137,7 @@ const AddProduct = () => {
                             {[0, 1, 2].map((i) => (
                                 <input
                                     key={i}
+                                    required
                                     type="file"
                                     name="images"
                                     id={`img${i}`}

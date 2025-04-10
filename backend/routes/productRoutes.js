@@ -12,7 +12,6 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 router.post('/add', upload.array('images', 3), async (req, res) => {
-    console.log('in backend upload');
     
     try {
         const imagePaths = req.files.map(file => file.path);
